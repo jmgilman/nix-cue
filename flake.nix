@@ -15,6 +15,7 @@
 
         checks = {
           json = pkgs.callPackage ./tests/json { inherit pkgs lib; };
+          pre-commit = pkgs.callPackage ./tests/pre-commit { inherit pkgs lib; };
           text = pkgs.callPackage ./tests/text { inherit pkgs lib; };
         };
 
