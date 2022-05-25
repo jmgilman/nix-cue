@@ -4,7 +4,7 @@
 
 This flake provides functions for evaluating Cue files using input from a Nix
 expression and writing the output to the Nix store. It can be used to validate
-and generate configuration data to be used within Nix environemnts.
+and generate configuration files to be used within Nix environments.
 
 ## Usage
 
