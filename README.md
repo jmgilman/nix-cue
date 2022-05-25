@@ -1,10 +1,23 @@
 # nix-cue
 
+<p align="center">
+    <a href="https://github.com/jmgilman/nix-cue/actions/workflows/ci.yml">
+        <img src="https://github.com/jmgilman/nix-cue/actions/workflows/ci.yml/badge.svg"/>
+    </a>
+    <img src="https://img.shields.io/github/license/jmgilman/nix-cue"/>
+    <a href="https://builtwithnix.org)">
+        <img src="https://img.shields.io/badge/-Built%20with%20Nix-green">
+    </a>
+</p>
+
 > Validate and generate configuration files using [Nix][1] and [Cue][2].
 
-This flake provides functions for evaluating Cue files using input from a Nix
-expression and writing the output to the Nix store. It can be used to validate
-and generate configuration files to be used within Nix environments.
+## Features
+
+- Specify configuration data using native Nix syntax
+- Validate configuration data using the language features from [Cue][2]
+- Generate configuration files in any of the [supported formats][3]
+- All artifacts are placed in the Nix store
 
 ## Usage
 
@@ -12,7 +25,7 @@ This flake has a wide variety of uses due to the general-purpose nature of the
 Cue language.
 
 As an example, we can validate and generate a configuration file
-for [pre-commit][3]. The first step is to define a cue file:
+for [pre-commit][4]. The first step is to define a cue file:
 
 ```cue
 #Config: {
@@ -58,7 +71,7 @@ for [pre-commit][3]. The first step is to define a cue file:
 }
 ```
 
-This validates against the schema described in the [official docs][4]. With the
+This validates against the schema described in the [official docs][5]. With the
 Cue file, we can now define our input data and generate the YAML configuration:
 
 ```nix
@@ -137,7 +150,7 @@ nix flake check
 
 ## Contributing
 
-Check out the [issues][5] for items needing attention or submit your own and
+Check out the [issues][6] for items needing attention or submit your own and
 then:
 
 1. Fork the repo (<https://github.com/jmgilman/nix-cue/fork>)
@@ -148,6 +161,7 @@ then:
 
 [1]: https://nixos.org/
 [2]: https://cuelang.org/
-[3]: https://pre-commit.com/
-[4]: https://pre-commit.com/#adding-pre-commit-plugins-to-your-project
-[5]: https://github.com/jmgilman/nix-cue/issues
+[3]: https://cuelang.org/docs/integrations/
+[4]: https://pre-commit.com/
+[5]: https://pre-commit.com/#adding-pre-commit-plugins-to-your-project
+[6]: https://github.com/jmgilman/nix-cue/issues
