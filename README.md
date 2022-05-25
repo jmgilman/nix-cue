@@ -5,7 +5,7 @@
         <img src="https://github.com/jmgilman/nix-cue/actions/workflows/ci.yml/badge.svg"/>
     </a>
     <img src="https://img.shields.io/github/license/jmgilman/nix-cue"/>
-    <a href="https://builtwithnix.org)">
+    <a href="https://builtwithnix.org">
         <img src="https://img.shields.io/badge/-Built%20with%20Nix-green">
     </a>
 </p>
