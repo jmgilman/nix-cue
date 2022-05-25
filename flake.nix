@@ -22,6 +22,7 @@
         devShells.default = pkgs.mkShell {
           packages = [
             pkgs.cue
+            pkgs.nixpkgs-fmt
           ];
         };
       }

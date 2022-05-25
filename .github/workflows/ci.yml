@@ -10,7 +10,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  tests:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: cachix/install-nix-action@v17
+    - run: nix develop -c nixpkgs-fmt --check $(git ls-files **/*.nix)
+  test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
