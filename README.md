@@ -115,7 +115,15 @@ Cue file, we can now define our input data and generate the YAML configuration:
 
 Running `nix develop` with the above flake will generate a
 `.pre-commit-config.yaml` file in the store using the configuration given in
-`config` and then link it to the local directory via the `shellHook`.
+`config` and then link it to the local directory via the `shellHook`:
+
+```yaml
+repos:
+  - hooks:
+      - id: my-hook
+    repo: https://github.com/test/repo
+    rev: "1.0"
+```
 
 You can see more examples in the [tests](./tests) folder.
 
