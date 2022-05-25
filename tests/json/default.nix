@@ -11,7 +11,6 @@ let
           "subparam1" = "test1";
         };
       };
-      wrap = "data";
     };
 
   result = pkgs.runCommand "test.json"

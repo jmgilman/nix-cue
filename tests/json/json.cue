@@ -4,4 +4,6 @@
 	param3: [string]: string
 }
 
-data: #Config
+{
+	#Config
+}
