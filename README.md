@@ -21,11 +21,60 @@
 
 ## Usage
 
-This flake has a wide variety of uses due to the general-purpose nature of the
-Cue language.
+Add the flake as an input:
 
-As an example, we can validate and generate a configuration file
-for [pre-commit][4]. The first step is to define a cue file:
+```nix
+{ #....
+  inputs = {
+    # ...
+    nix-cue.url = "github:jmgilman/nix-cue";
+  };
+}
+```
+
+The flake provides a single function: `nix-cue.lib.${system}.eval`. The function
+takes a few common parameters, for example:
+
+```nix
+{ # ...
+  configFile = nix-cue.lib.${system}.eval {
+      inherit pkgs;
+      inputFiles = [ ./pre-commit.cue ]; # Input files to pass to `cue eval`
+      outputFile = ".pre-commit-config.yaml"; # Output file to put in Nix store
+      data = {
+        # Concrete data to pass to `cue eval`
+      };
+  };
+}
+```
+
+The full path to the output file in the Nix store will be returned (in the above
+case, we are storing it in `configFile`). The `data` parameter is optional and
+is used to pass a Nix set as concrete input to `cue`. The expression is
+converted to JSON and added as an additional input file.
+
+`cue` determines the output format by examining the output file extension. If
+you need to output a specific format without a matching file extension, pass the
+`output` flag with the desired format.
+
+Flags can be passed to `cue eval` by appending them to the function arguments.
+The format is `{ flag_name = flag_value; }`. For example, to force `cue` to
+output JSON regardless of the output file extension:
+
+```nix
+{ # ...
+  configFile = nix-cue.lib.${system}.eval {
+      # ...
+      output = "json"; # Equivalent to --output "myExpr"
+      # ...
+  };
+}
+```
+
+## Example
+
+As an example, we can validate and generate a configuration file for
+[pre-commit][4]. The first step is to define a cue file:
 
 ```cue
 #Config: {
