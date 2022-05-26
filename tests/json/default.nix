@@ -1,10 +1,11 @@
 { pkgs, lib }:
 let
-  output = lib.evalJSON
+  output = lib.eval
     {
       inherit pkgs;
-      cueFile = ./json.cue;
-      input = {
+      inputFiles = [ ./json.cue ];
+      outputFile = "out.json";
+      data = {
         param1 = "test";
         param2 = 100;
         param3 = {

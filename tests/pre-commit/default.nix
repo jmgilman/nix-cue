@@ -1,10 +1,11 @@
 { pkgs, lib }:
 let
-  output = lib.evalYAML
+  output = lib.eval
     {
       inherit pkgs;
-      cueFile = ./pre-commit.cue;
-      input = {
+      inputFiles = [ ./pre-commit.cue ];
+      outputFile = ".pre-commit-config.yaml";
+      data = {
         repos = [
           {
             repo = "https://github.com/test/repo";

@@ -1,18 +1,20 @@
 { pkgs, lib }:
 let
-  output = lib.evalText
+  output = lib.eval
     {
       inherit pkgs;
-      cueFile = ./text.cue;
-      expr = "rendered";
-      input = {
-        param1 = "test";
-        param2 = 100;
-        param3 = {
-          "subparam1" = "test1";
+      inputFiles = [ ./text.cue ];
+      outputFile = "test.txt";
+      expression = "rendered";
+      data = {
+        data = {
+          param1 = "test";
+          param2 = 100;
+          param3 = {
+            "subparam1" = "test1";
+          };
         };
       };
-      wrap = "data";
     };
 
   result = pkgs.runCommand "test.text"

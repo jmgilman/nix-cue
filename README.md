@@ -102,11 +102,12 @@ Cue file, we can now define our input data and generate the YAML configuration:
             ];
         };
 
-        # Validate the configuration and output it to YAML
-        configFile = nix-cue.lib.${system}.evalYAML {
+        # Validate the configuration and generate the output file
+        configFile = nix-cue.lib.${system}.eval {
             inherit pkgs;
-            cueFile = ./pre-commit.cue;
-            input = config;
+            inputFiles = [ ./pre-commit.cue ];
+            outputFile = ".pre-commit-config.yaml";
+            data = config;
         };
       in
       {

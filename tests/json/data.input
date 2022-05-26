@@ -1,0 +1,7 @@
+{
+    "param1": "test",
+    "param2": 100,
+    "param3": {
+        "subparam1": "test1"
+    }
+}
